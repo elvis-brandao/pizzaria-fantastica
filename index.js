@@ -6,6 +6,8 @@ const PizzasRouter = require('./routers/PizzasRouter');
 
 // Criar uma aplicação em express
 const app = express();
+app.set("view engine", "ejs");
+app.set("views", "./views");
 
 // Fazer com que a aplicação express atenda a uma requisição
 app.use('/', PizzasRouter);
