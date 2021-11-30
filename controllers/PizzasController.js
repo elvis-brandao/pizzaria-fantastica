@@ -1,10 +1,17 @@
-const Pizzas = require('../database/Pizzas.json');
+const pizzas = require('../database/Pizzas.json');
 const controller = {
-    listar: (req, res) => {res.send(Pizzas)},
+    listar: (req, res) => {
+        res.render('index', {pizzas, busca: ''})
+    },
     getPizza: (req, res) => {
         let idPizza = req.params.id;
-        const pizza = Pizzas.find(p => p.id == idPizza);
+        const pizza = pizzas.find(p => p.id == idPizza);
         res.render('pizza.ejs', {pizza});
+    },
+    busca: (req, res) => {
+        let filtro = req.query.q;
+        let pizzaFiltro = pizzas.filter(p => p.nome.toUpperCase().includes(filtro.toUpperCase()));
+        res.render('index', {pizzas: pizzaFiltro, busca: filtro})
     }
 };
 
