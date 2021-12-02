@@ -10,6 +10,10 @@ const app = express();
 app.set("view engine", "ejs");
 app.set("views", "./views");
 
+//Configurado o processamento de formulários
+app.use(express.urlencoded({extended: false}));
+app.use(express.json());
+
 //Configurar a pasta public
 app.use(express.static(__dirname + "/public"));
 
