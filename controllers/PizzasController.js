@@ -23,7 +23,7 @@ const controller = {
         const preco = Number(req.body.preco);
         const id = pizzas[pizzas.length -1].id + 1;
         
-        const pizza = {id, nome, ingredientes, preco, img: ''};
+        const pizza = {id, nome, ingredientes, preco, img: '/img/' + req.file.filename};
         pizzas.push(pizza);
 
         //Salvar o json do array de pizzas no arquivo Pizzas.json
