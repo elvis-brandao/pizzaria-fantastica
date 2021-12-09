@@ -6,8 +6,13 @@ const controller = {
     },
     getPizza: (req, res) => {
         let idPizza = req.params.id;
-        const pizza = pizzas.find(p => p.id == idPizza);
-        res.render('pizza.ejs', {pizza});
+        let idPrev, idNext = undefined;
+        const pizza = pizzas.find((p, i) =>{
+            p[i-1].id != undefined ? idPrev = p[i-1].id : undefined;
+            p[i+1].id != undefined ? idNext = p[i+1].id : undefined;
+            return p.id == idPizza
+        });
+        res.render('pizza.ejs', {pizza, idPrev, idNext});
     },
     busca: (req, res) => {
         let filtro = req.query.q;

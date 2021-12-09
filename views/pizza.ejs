@@ -7,11 +7,11 @@
 		<div>Ingredientes: <%= pizza.ingredientes.join(", ") %></div>
 		<button>+ Add</button>
 		
-		<% if(idPrev){ %>
+		<% if(idPrev != undefined){ %>
 		<a href="/pizzas/<%= idPrev %>" class="prev">&lt;</a>
 		<% } %>
 
-		<% if(idNext){ %>
+		<% if(idNext != undefined){ %>
 		<a href="/pizzas/<%= idNext %>" class="next">&gt;</a>
 		<% } %>
 	</main>
