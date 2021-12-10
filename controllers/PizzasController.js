@@ -8,8 +8,8 @@ const controller = {
         let idPizza = req.params.id;
         let idPrev, idNext = undefined;
         const pizza = pizzas.find((p, i) =>{
-            p[i-1].id != undefined ? idPrev = p[i-1].id : undefined;
-            p[i+1].id != undefined ? idNext = p[i+1].id : undefined;
+            idPrev =  pizzas[i-1] != undefined ? pizzas[i-1].id : undefined;
+            idNext =  pizzas[i+1] != undefined ? pizzas[i+1].id : undefined;
             return p.id == idPizza
         });
         res.render('pizza.ejs', {pizza, idPrev, idNext});
