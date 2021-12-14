@@ -17,12 +17,17 @@ const upload = multer({storage});
 //Importar o PizzasController
  const PizzasController = require('../controllers/PizzasController');
 
+//Importar o AdmController
+const AdmController = require('../controllers/AdmController');
+
 //Criar o roteador
 const router = express.Router();
 
 //Definir rotas às quais ele responderá
 router.get('/pizzas/create', PizzasController.create);
 router.post('/pizzas/create', upload.single('img'), ValidadorDeFormPizza, PizzasController.store);
+router.get('/login', AdmController.showLogin);
+router.post('/login', AdmController.login)
 
 //Exportar o roteador
 module.exports = router;
