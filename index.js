@@ -1,6 +1,9 @@
 // Importar o express
 const express = require('express');
 
+//Importar o express-session
+const session = require('express-session');
+
 //Importando o roteadores
 const PizzasRouter = require('./routers/PizzasRouter');
 const AdmRouter = require('./routers/AdmRouter');
@@ -13,6 +16,9 @@ app.set("views", "./views");
 //Configurado o processamento de formulários
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
+
+//Chamando a função session
+app.use(session({secret: "SEGREDO"}));
 
 //Configurar a pasta public
 app.use(express.static(__dirname + "/public"));

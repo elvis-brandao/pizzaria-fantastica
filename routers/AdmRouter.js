@@ -20,11 +20,14 @@ const upload = multer({storage});
 //Importar o AdmController
 const AdmController = require('../controllers/AdmController');
 
+//Importando o Middleware de verificação de logado
+const UsuarioLogado = require('../middlewares/UsuarioLogado');
+
 //Criar o roteador
 const router = express.Router();
 
 //Definir rotas às quais ele responderá
-router.get('/pizzas/create', PizzasController.create);
+router.get('/pizzas/create', UsuarioLogado ,PizzasController.create);
 router.post('/pizzas/create', upload.single('img'), ValidadorDeFormPizza, PizzasController.store);
 router.get('/login', AdmController.showLogin);
 router.post('/login', AdmController.login)
