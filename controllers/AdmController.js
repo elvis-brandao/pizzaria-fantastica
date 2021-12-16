@@ -1,3 +1,5 @@
+const session = require('express-session');
+
 const controller = {
     showLogin: (req, res) => {
         res.render('login');
@@ -12,7 +14,14 @@ const controller = {
             return res.send('Senha ou email inválidos');
         }
 
-        return res.send('ok! Tudo certo...');
+        req.session.usuario = usuario;
+        res.redirect('/adm/pizzas/create');
+    },
+    logout: (req, res) => {
+        if(req.session.usuario !== undefined){
+            req.session.usuario = undefined;
+        }
+        res.redirect('/adm/login');
     }
 }
 

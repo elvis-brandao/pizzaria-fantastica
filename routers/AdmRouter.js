@@ -30,7 +30,8 @@ const router = express.Router();
 router.get('/pizzas/create', UsuarioLogado ,PizzasController.create);
 router.post('/pizzas/create', upload.single('img'), ValidadorDeFormPizza, PizzasController.store);
 router.get('/login', AdmController.showLogin);
-router.post('/login', AdmController.login)
+router.post('/login', AdmController.login);
+router.get('logout', AdmController.logout)
 
 //Exportar o roteador
 module.exports = router;
